@@ -1754,3 +1754,160 @@ public class ex_03 {
     }
 
 }
+------------------------------------------------------------------
+atividade avaliativa
+------------------------------------------------------------------
+import java.util.Scanner;
+
+public class questao2 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Informe um número ímpar: ");
+        int num = sc.nextInt();
+        while(num % 2 == 0){
+            System.out.println("Número inválido, por favor, digite um número ímpar: ");
+            num = sc.nextInt();
+        }
+
+        int acres = 0;
+        int pri = 1;
+        String asteriscos = "";
+        double espInt = Math.floor(num / 2);
+        String espacos = "";
+
+
+        for(int i = 1; i <= num; i++){
+            for(int e = 1; e <= espInt; e++){
+                espacos += " ";
+            }
+            for(int j = 1; j <= (pri + acres); j++){
+                asteriscos += "*";
+            }
+
+            if(i > (num / 2)){
+                pri--;
+                acres = pri - 1;
+                espInt++;
+            } else {
+                espInt--;
+                acres = pri;
+                pri++;
+            }
+
+
+            asteriscos = espacos + asteriscos;
+            System.out.println(asteriscos);
+            asteriscos = "";
+            espacos = "";
+        }
+
+    }
+}
+-------------------------------------------------------------------
+import java.util.Scanner;
+
+public class questao1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        double result=0;
+
+        System.out.print("---MENU DE OPÇÕES---" +
+                "\n1 - Soma;" +
+                "\n2 - Multiplicação;" +
+                "\n3 - Divisão;" +
+                "\n4 - Subtração;" +
+                "\n5 - Potenciação;" +
+                "\n6 - Porcentagem;" +
+                "\n7 - Raiz quadrada;" +
+                "\n-->  ");
+        int opcao = sc.nextInt();
+
+        switch(opcao){
+            case 1: {
+                System.out.print("Informe a quantidade de números que deseja somar:");
+                int qntd = sc.nextInt();
+                while(qntd < 2 || qntd > 5){
+                    System.out.println("Número inválido, digite novamente (2-5)");
+                    qntd = sc.nextInt();
+                }
+                for(int i = 1; i <= qntd; i++) {
+                    System.out.println("Informe o número: " + i + ":");
+                    result += sc.nextDouble();
+                }
+                break;
+            }
+            case 2: {
+                System.out.print("Informe a quantidade de números que deseja multiplicar:");
+                int qntd = sc.nextInt();
+                while(qntd < 2 || qntd > 5){
+                    System.out.println("Número inválido, digite novamente (2-5)");
+                    qntd = sc.nextInt();
+                }
+                result = 1;
+                for(int i = 1; i <= qntd; i++) {
+                    System.out.println("Informe o número: " + i + ":");
+                    result *= sc.nextDouble();
+                }
+                break;
+            }
+            case 3: {
+                System.out.print("Informe 1 número:");
+                double num1 = sc.nextDouble();
+                System.out.print(num1 + " / :");
+                double num2 = sc.nextDouble();
+
+                result = num1 / num2;
+                break;
+            }
+            case 4: {
+                System.out.print("Informe a quantidade de números que deseja subtrair (2 - 5):");
+                int qntd = sc.nextInt();
+                while(qntd < 2 || qntd > 5){
+                    System.out.println("Número inválido, digite novamente (2-5)");
+                    qntd = sc.nextInt();
+                }
+
+                for(int i = 1; i <= qntd; i++) {
+                    System.out.println("Informe o número: " + i + ":");
+                    if(i == 1){
+                        result = sc.nextDouble();
+                    } else {
+                        System.out.print(result + " - :");
+                        result -= sc.nextDouble();
+                    }
+                }
+                break;
+            }
+            case 5: {
+                System.out.print("Informe 1 número:");
+                double num1 = sc.nextDouble();
+                System.out.print(num1 + " ^ :");
+                double num2 = sc.nextDouble();
+
+                result = Math.pow(num1, num2);
+                break;
+            }
+            case 6: {
+                System.out.print("Informe 1 número:");
+                double num1 = sc.nextDouble();
+                System.out.print(num1 + " % de :");
+                double num2 = sc.nextDouble();
+
+                result = (num1 * 100) / num2;
+                break;
+            }
+            case 7: {
+                System.out.print("Tirar a raiz quadrada de:");
+                double num1 = sc.nextDouble();
+
+                result = Math.sqrt(num1);
+                break;
+            }
+        }
+
+        System.out.println("Resultado da operação: " + result);
+
+        sc.close();
+    }
+}
